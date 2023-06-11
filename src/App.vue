@@ -4,11 +4,24 @@ import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <h1 class="text-[length:var(--text-headline-2)] bg-red-600">This is a new app</h1>
-  </header>
+  <section class="page bg-cover bg-center">
+    <div class="sidebar bg-burgundy sm:w-[var(--xSmall-1-3)] md:w-[var(--small-2-4)] lg:w-[var(--loMed-2-5)] z-10"></div>
+  </section>
 </template>
 
 <style scoped>
+  .page{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr var(--loMed-1-3) var(--hiMed-2-3);
+    background-image: url('./assets/background.jpg');
+  }
 
+  .sidebar{
+    grid-area: 1/1/4/2;
+    display: block;
+    --baseSize-w: var(--loMed-1-3);
+  }
 </style>
