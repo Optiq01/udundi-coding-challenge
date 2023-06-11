@@ -560,6 +560,13 @@
     --text-jumbotron-4 : calc(var(--text-jumbotron-1) * var(--grc11-4));
     --text-jumbotron-5 : calc(var(--text-jumbotron-1) * var(--grc11-5));
     
+    /*--------  Ultra Jumbotron Text Sizes  --------*/
+    --text-ultraJumbotron-1 : calc(var(--text-jumbotron-1)  + calc(var(--bsp) * 22));
+    --text-ultraJumbotron-2 : calc(var(--text-ultraJumbotron-1) * var(--grc12-2));
+    --text-ultraJumbotron-3 : calc(var(--text-ultraJumbotron-1) * var(--grc12-3));
+    --text-ultraJumbotron-4 : calc(var(--text-ultraJumbotron-1) * var(--grc12-4));
+    --text-ultraJumbotron-5 : calc(var(--text-ultraJumbotron-1) * var(--grc12-5));
+    
     
     
     }
