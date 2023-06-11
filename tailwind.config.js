@@ -12,7 +12,8 @@ module.exports = {
     },
     colors:{
       'burgundy': '#611818',
-      'tan': '#a36754'
+      'tan': '#a36754',
+      'white': '#ffffff'
     }
   },
   plugins: [],
