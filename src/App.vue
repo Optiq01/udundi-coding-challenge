@@ -5,7 +5,11 @@
   <section class="page bg-cover bg-center">
     <div class="sidebar bg-burgundy sm:w-[var(--tiny-2-3)] md:w-[var(--xSmall-2-4)] lg:w-[var(--loMed-1-5)] z-10"></div>
     <article class="titleArea z-20 w-full h-full">
-      <h1 class="title align-middle sm:text-[length:var(--text-ultraJumbotron-1)] md:text-[length:var(--text-ultraJumbotron-2)] text-white">Explore</h1>
+      <h1 class="title align-middle sm:text-[length:var(--text-ultraJumbotron-2)] md:text-[length:var(--text-ultraJumbotron-3)] text-white">Explore</h1>
+      <div class="plusBtnContainer gap-[var(--micro-1-3)]">
+        <img src="./assets/Plus.svg" class="sm:w-[var(--xTiny-1-3)]" />
+        <p class="align-center text-white sm:text-[length:var(--text-widget-3)] md:text-[length:var(--text-article-3)]">more details</p>
+      </div>
     </article>
   </section>
 </template>
@@ -29,13 +33,28 @@
     grid-area: 2/1/3/3;
     display: grid;
     grid-template-columns: var(--xTiny-2-4) auto 1fr;
-    grid-template-rows: auto, 1fr;
-    place-items: center;
+    grid-template-rows: auto 1fr;
     font-family: 'Prata', serif;
   }
 
   .title{
     grid-area: 1/2/2/3;
+    place-self: center;
+  }
+
+  .plusBtnContainer{
+    display: grid;
+    grid-area: 2/2/3/3;
+    justify-self: left;
+    align-self: start;
+    grid-template-columns: auto auto;
+  }
+
+  @media(min-width: 500px){
+    .plusBtnContainer{
+      grid-area: 1/2/2/3;
+      align-self: last baseline;
+    }
   }
 
   @media(min-width: 1014px){
