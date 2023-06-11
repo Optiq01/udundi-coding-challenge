@@ -8,7 +8,7 @@
       <h1 class="title align-middle sm:text-[length:var(--text-ultraJumbotron-2)] md:text-[length:var(--text-ultraJumbotron-3)] text-white">Explore</h1>
       <div class="plusBtnContainer gap-[var(--micro-1-3)]">
         <img src="./assets/Plus.svg" class="sm:w-[var(--xTiny-1-3)]" />
-        <p class="align-center text-white sm:text-[length:var(--text-widget-3)] md:text-[length:var(--text-article-3)]">more details</p>
+        <p class="align-center sm:text-[length:var(--text-widget-3)] md:text-[length:var(--text-article-3)]">more details</p>
       </div>
     </article>
   </section>
@@ -40,6 +40,9 @@
   .title{
     grid-area: 1/2/2/3;
     place-self: center;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .plusBtnContainer{
