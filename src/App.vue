@@ -11,6 +11,7 @@
   onMounted(()=>{
 
     const animatedTitle = document.getElementById('animatedTitle');
+    const textFrame = document.getElementById('textFrame');
 
     document.getElementById('plusButton')!.addEventListener('animationend', ()=>{
      plusButtonComplete.value = true;
@@ -22,6 +23,13 @@
      titleAnimationComplete.value = true;
      console.log('title complete', titleAnimationComplete);
     });
+
+    textFrame!.addEventListener('animationend', ()=>{
+      textFrame!.style.height = '100%';
+      textFrame!.style.width = '100%';
+      textFrame!.style.borderRadius = '0';
+      textFrame!.style.top = '0';
+    })
 
   });
 
@@ -84,6 +92,20 @@
       @click="plusButtonClicked = true"
       src="./assets/Plus.svg"
     />
+    <p class="
+        details
+        text-white
+        align-center
+        sm:text-[length:var(--text-widget-3)]
+        md:text-[length:var(--text-article-3)]
+        col-start-3
+        col-end-9
+        row-start-5
+        row-end-6"
+    >
+      more details
+    </p>
+
     <Transition name="plusButtonAnimation">
       <img v-show="plusButtonClicked"
            class=".plusButton
@@ -97,8 +119,32 @@
       />
     </Transition>
 
+    <section class="
+              textContainer
+              col-start-3
+              sm:col-end-11
+              md:col-end-10
+              lg:col-end-8
+              row-start-2
+              row-end-6"
+    >
+  
+      <Transition name="textFrameAnimation">
+        <article
+          v-show="plusButtonComplete"
+          id="textFrame"
+          class="textFrame
+                sm:w-[var(--xTiny-1-3)]
+                sm:h-[var(--xTiny-1-3)]
+                bg-white z-70"
+        >
+
+        </article>
+      </Transition>
+    </section>
+
+
   </section>
-  <!--<section class="page bg-cover bg-center">
 
     <div class="sidebar bg-burgundy sm:w-[var(--tiny-2-3)] md:w-[var(--xSmall-2-4)] lg:w-[var(--loMed-1-5)] z-10"></div>
     
@@ -144,48 +190,15 @@
 
 .page{
   display: grid;
-  /*width: 100%;
-  height: 100%;*/
-  /*grid-template-columns: repeat(22, 1fr);
-  grid-template-rows: repeat(22, 1fr);*/
-  /*grid-template-columns: 1fr var(--loMed-1-3) var(--tiny-1-4) var(--loMed-2-4) var(--loMed-2-4) 1fr;
-  grid-template-rows: 1fr var(--tiny-1-4) var(--tiny-2-5) var(--loMed-2-3) var(--tiny-1-6) 1fr;*/
   background-image: url('./assets/background.jpg');
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
 }
-
-  /*.page{
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr var(--loMed-2-3) auto 1fr;
-    background-image: url('./assets/background.jpg');
-  }*/
-
-  /*.sidebar{
-    /*grid-area:1/1/23/6;*/
-    /*min-width: var(--xSmall-1-3);
-  }*/
-
-  /*.sidebar{
-    grid-area: 1/1/5/2;
-    display: block;
-  }*/
-
-  .titleArea{
-    grid-area: 3/2/4/5;
-    display: grid;
-    grid-template-columns: var(--xTiny-2-4) auto 1fr;
-    grid-template-rows: auto 1fr;
-  }
   
   .title{
     font-family: 'Prata', serif;
     pointer-events: none;
-   /* grid-area: 1/1/2/3;*/
     align-self: left;
     width: min-content;
     text-align: left;
@@ -202,27 +215,6 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
-  /*.title{
-    font-family: 'Prata', serif;
-    pointer-events: none;
-    grid-area: 1/1/2/3;
-    align-self: left;
-    width: min-content;
-    text-align: left;
-    place-self: center;
-    position: relative;
-    background: linear-gradient(90deg,
-      rgba(255,255,255,0) 0%,
-      rgba(255,255,255,1) 5%,
-      rgba(255,255,255,1) 100%);
-    background-size: 130%;
-    background-position-x: 50%;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }*/
 
   .plusBtnContainer{
     display: grid;
@@ -241,30 +233,34 @@
 
   .plusButton{
     /*grid-area: 1/1/2/2;*/
-    /*grid-row: 1;
-    grid-column: 1;*/
+    grid-row: 1;
+    grid-column: 1;
     /*justify-self: left;*/
-    /*justify-self: flex-start;*/
-    align-self: end;
-  }
-  .textFrame{
-    display: block;
-    position: relative;
-    top: var(--hiMed-1-5);
-    /*grid-area:1/1/2/2;*/
-    border-radius: 50%;
-    z-index: 100;
-    /*grid-row: 1;
-    grid-column: 1;*/
-    justify-self: flex-start;
-    position:absolute;
-    -webkit-transform-origin: bottom left;
+    /*justify-self: flex-start;
+    align-self: end;*/
   }
 
+  .textContainer{
+    pointer-events: none;
+  }
+  .textFrame{
+    grid-area: 5/3/6/4;
+    display: grid;
+    position: relative;
+    top: 50vh;
+    border-radius: 50%;
+    z-index: 100;
+    /*justify-self: flex-start;*/
+    /*position:absolute;*/
+    -webkit-transform-origin: bottom left;
+    transform-origin: bottom left;
+  }*
+
   .details{
-    grid-area: 1/2/2/3;
-    justify-self: flex-end;
-    text-align: right;
+    /*grid-area: 5/3/6/4;*/
+    /*justify-self: flex-end;*/
+    text-align: left;
+    margin-left: 3rem;
   }
 
   @keyframes plusButtonAnimationSequence{
@@ -294,17 +290,23 @@
   }
 
   @keyframes textFrameAnimationSequence{
-    from {
+    0% {
       border-radius: 50%;
       /*width: var(--xTiny-1-3);
       height: var(--xTiny-1-3);*/
     }
-    to {
+    1%{
+      /*grid-area: 2/3/6/8;*/
+
+    }
+    100% {
       border-radius: 0;
-      width: var(--hiMed-1-9);
-      height: var(--hiMed-2-5);
-      transform: translateY(-10vh);
-      transform: translateX(3vw);
+      top: 0;
+      width: 100%;
+      height: 100%;
+      /*top: -20rem;*/
+      /*transform: translateY(-10vh);
+      transform: translateX(3vw);*/
       /*top: 2px;*/
     }
   }
